@@ -43,42 +43,44 @@ const Home = () => {
                     <input id="searchbox" className=" text-2xl px-5 py-7 w-full outline-none" placeholder="Search for movie" onChange={onSearchTermChange} value={searchTerm} />
                     {
                         hasError && <div className=" text-lg text-red-600">
-                            There are too many results here. <br />
-                            Please make more specific search!
+                            There are too many results here or No matches. <br />
+                            Please make more clear search!
                         </div>
                     }
-                    <div>
-                        {
-                            movies.length > 0
-                                ?
-                                <div className=" px-6">
-                                    <h3 className="pt-3 pb-2">Movies</h3>
-                                    <ul>
-                                        {movies.map((movie, index) => {
-                                            return (
-                                                <Compo key={index} value={movie.Title} higlight={searchTerm} />
-                                            )
-                                        })}
-                                    </ul>
-                                </div>
-                                : ""
-                        }
-                        {
-                            series.length > 0
-                                ?
-                                <div className=" pt-5 px-6">
-                                    <h3 className="pt-3 pb-2">TV shows</h3>
-                                    <ul>
-                                        {series.map((movie, index) => {
-                                            return (
-                                                <Compo key={index} value={movie.Title} higlight={searchTerm} />
-                                            )
-                                        })}
-                                    </ul>
-                                </div>
-                                : ""
-                        }
-                    </div>
+                    {
+                        !hasError && <div>
+                            {
+                                movies.length > 0
+                                    ?
+                                    <div className=" px-6">
+                                        <h3 className="pt-3 pb-2">Movies</h3>
+                                        <ul>
+                                            {movies.map((movie, index) => {
+                                                return (
+                                                    <Compo key={index} value={movie.Title} higlight={searchTerm} />
+                                                )
+                                            })}
+                                        </ul>
+                                    </div>
+                                    : ""
+                            }
+                            {
+                                series.length > 0
+                                    ?
+                                    <div className=" pt-5 px-6">
+                                        <h3 className="pt-3 pb-2">TV shows</h3>
+                                        <ul>
+                                            {series.map((movie, index) => {
+                                                return (
+                                                    <Compo key={index} value={movie.Title} higlight={searchTerm} />
+                                                )
+                                            })}
+                                        </ul>
+                                    </div>
+                                    : ""
+                            }
+                        </div>
+                    }
                 </div>
             </div>
         </div>
